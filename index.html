@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@900&display=swap" rel="stylesheet"> 
+  <title>Frontend Mentor | Order summary card</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    *,
+    *::before,
+    *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 16px;
+    }
+    :root{
+      --bright-blue:hsl(245, 75%, 52%);
+      --pale-blue:hsl(225, 100%, 98%);
+      --desaturated-blue: hsl(224, 23%, 55%);
+      --dark-blue: hsl(223, 47%, 23%);
+    }
+    .attribution {
+      font-size: 11px; 
+      text-align: center; 
+    }
+    .attribution a { 
+      color: hsl(228, 45%, 44%); 
+    }
+    body{
+      background: url("images/pattern-background-desktop.svg");
+      background-repeat: no-repeat;
+      background-color: hsl(225, 100%, 94%);
+    }
+    img{
+      max-width: 100%;
+    }
+
+    /*This class is the container for the card. it will cover all the screen so that the card can
+    be at the center */
+    .container{
+      height: 100vh;
+      display:flex;
+      align-items: center;
+    }
+
+    /* these are the attributes for the card */
+    .card{
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 400px;
+      width:90%;
+      background-color: white;
+      border-radius: 15px;
+      padding-bottom: 2em;
+    }
+
+    .container__img img{
+      border-top-right-radius: 15px;
+      border-top-left-radius: 15px;
+    }
+
+    /* this container will ensure that none of the card's sections will be bigger than 90% of the 
+    card's width*/
+    .card__container{
+      width:90%;
+    }
+
+    /* this is the order summary section*/
+    .order__section{
+      margin-top: 2em;
+      margin-bottom: 1.5em;
+      text-align: center;
+      width:80%;
+    }
+    .order__section h2{
+      font-weight: 900;
+      font-size: 1.5rem;
+      text-transform: capitalize;
+      color: var(--dark-blue);
+      margin-bottom: .6em;
+    }
+    .order__section p{
+      font-weight: 500;
+      opacity: .6;
+      line-height: 1.7;
+    }
+
+    /*these are some general attributes of the plan price info section*/
+    .plan__card--color{
+      background-color: var(--pale-blue);
+      border-radius: 15px;
+      margin-bottom: 1.5em;
+    }
+
+    /* this container will hold all the information about the plan section.*/
+    .plan__section--container{
+      width:90%;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      align-items: center;
+      padding-block: 1.5em;
+    }
+    .plan__section--container a{
+      color:var(--bright-blue);
+      transition: opacity .2s ease-in-out;
+    }
+    .plan__section--container a:hover{
+      opacity:.5;
+    }
+    /* this is class will contain the annual plan, price info plus the icon music*/
+    .plan__info--container{
+      display: flex;
+    }
+    .plan__info--container p{
+      line-height: 1.5;
+    }
+    .annual__plan{
+      color:var(--dark-blue);
+      font-weight: 900;
+    }
+    .value__year{
+      opacity:.6;
+    }
+    .icon-music__display{
+      margin-right: 1em;
+    }
+
+    /* these are the attributes for the payment button */
+    .btn__payment{
+      display: block;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      width:100%;
+      padding-block: .8em;
+      border-radius: 10px;
+      background-color: var(--bright-blue);
+      border:none;
+      color:white;
+      box-shadow: 0px 8px 8px 1px rgb(0, 0, 0, 0.3);
+      margin-bottom: 1.5em;
+      transition: bottom 1s ease-in-out;
+    }
+    .btn__payment:hover{
+      bottom:5px;
+      box-shadow: 0px 15px 8px 1px rgb(0, 0, 0, 0.3);
+    }
+
+    /* attributes for the cancel link, last section of the card */
+    .cancel__link a{
+      text-decoration: none;
+      color: black;
+      opacity: .5;
+      font-weight: 900;
+      position: relative;
+      transition: all 1s ease-out;
+    }
+    .cancel__link a:hover{
+      top:5px;
+    }
+    @media(min-width:376px){
+      .card__container{
+        width:80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="container__img">
+        <img src="images/illustration-hero.svg" alt="a person listening to music">
+      </div>
+      <div class="order__section">
+        <h2>Order summary</h2>
+        <p>You can now listen to millions of songs, audiobooks, and podcasts on any 
+          device anywhere you like!</p>
+      </div>
+      <div class="card__container plan__card--color">
+        <div class="plan__section--container">
+          <div class="plan__info--container">
+            <img src="images/icon-music.svg" alt="icon-music" class="icon-music__display">
+            <p><span class="annual__plan">Annual Plan</span><br><span class="value__year">$59.99/year</span></p>
+          </div>
+          <p><a href="#">Change</a></p>
+        </div>
+      </div>
+      <div class="card__container">
+        <a href="#" class="btn__payment">Proceed to Payment</a>
+      </div>
+      <p class="cancel__link"><a href="#">Cancel Order</a></p>
+    </div>
+  </div>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Diego Díaz</a>.
+  </div>
+</body>
+</html>
